@@ -1,38 +1,302 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Home page css starts from here*/
+/* Full Page Wrapper */
+.homePageWrapper {
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: linear-gradient(135deg, #1e1f29, #282a36);
+  color: #fff;
+  overflow: hidden;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+/* Animated Background Effect */
+.homePageWrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(74, 237, 136, 0.1) 10%, transparent 10.01%);
+  background-size: 20px 20px;
+  animation: moveBackground 10s linear infinite;
+  z-index: 0;
 }
 
-@keyframes App-logo-spin {
+@keyframes moveBackground {
   from {
-    transform: rotate(0deg);
+    transform: translate(0, 0);
   }
   to {
-    transform: rotate(360deg);
+    transform: translate(20px, 20px);
   }
+}
+
+/* Glassmorphic Form */
+.formWrapper {
+  background: rgba(40, 42, 54, 0.9); /* Enhanced glass effect */
+  padding: 30px;
+  border-radius: 20px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.formWrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 16px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+footer {
+  position: fixed;
+  bottom: 20px;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+
+footer a {
+  color: #4aee88;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+footer a:hover {
+  color: #2fa865;
+}
+
+/* Logo and Title */
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.homePageLogo {
+  width: 70px;
+  height: auto;
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease-in-out;
+}
+
+.homePageLogo:hover {
+  transform: rotate(15deg) scale(1.1);
+}
+
+.logoText {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4aed88;
+  letter-spacing: 1.5px;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Labels */
+.mainLabel {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Input Group */
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Input Boxes */
+.inputBox {
+  padding: 14px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  transition: all 0.3s ease-in-out;
+}
+
+.inputBox::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.inputBox:focus {
+  border-color: #4aed88;
+  box-shadow: 0px 0px 12px rgba(74, 237, 136, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Join Button */
+.btn {
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.joinBtn , .leaveBtn {
+  background: #4aed88;
+  width: 120px;
+  margin-left: auto;
+  color: #fff;
+  box-shadow: 0px 6px 12px rgba(74, 237, 136, 0.4);
+}
+
+.joinBtn:hover , .leaveBtn:hover {
+  background: #2fa865;
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(74, 237, 136, 0.5);
+}
+
+/* Create New Room */
+.createInfo {
+  margin: 0 auto;
+  margin-top: 25px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.createNewBtn {
+  color: #4aed88;
+  text-decoration: none;
+  border-bottom: 1px solid #4aed88;
+  transition: all 0.3s ease-in-out;
+}
+
+.createNewBtn:hover {
+  color: #2fa865;
+  border-color: #2fa865;
+  transform: translateY(-2px);
+}
+
+
+/* Editor page css starts from here*/
+/* Main Wrapper */
+/* Main Wrapper */
+.mainWrap {
+  display: grid;
+  grid-template-columns: 230px 1fr; /* Aside takes 230px, editor takes the rest */
+  height: 100vh;
+  background: linear-gradient(135deg, #1e1f29, #282a36);
+  overflow: hidden;
+}
+
+/* Aside Section */
+.aside {
+  background: rgba(28, 30, 41, 0.9); /* Glass effect */
+  padding: 20px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(12px) saturate(180%);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.asideInner {
+  flex: 1;
+}
+
+/* Logo Section */
+.logo {
+  border-bottom: 1px solid rgba(66, 66, 66, 0.5);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.logoImage {
+  height: 60px;
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease-in-out;
+}
+
+.logoImage:hover {
+  transform: scale(1.05);
+}
+
+/* Clients List */
+.clientsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-content: flex-start; /* Fill rows first */
+}
+
+.client {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+.client:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.userName {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
+
+/* Buttons */
+.btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #4aed88;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background: #2fa865;
+  transform: scale(1.05);
+}
+
+/* Editor Section */
+.editorWrap {
+  display: flex;
+  flex-direction: column;
+  background: rgba(40, 42, 54, 0.9); /* Glass effect */
+  backdrop-filter: blur(12px) saturate(180%);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 20px;
+}
+
+/* CodeMirror Editor */
+.CodeMirror {
+  flex: 1; /* Fill the remaining space in the editor section */
+  font-size: 20px;
+  line-height: 1.6;
+  padding-top: 20px;
+  height: 100%; /* Ensure it takes full height */
 }
